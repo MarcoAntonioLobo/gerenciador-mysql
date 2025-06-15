@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Ambientes virtuais
+venv/
+.env/
+.venv/
+
+# Logs e arquivos temporários
+*.log
+*.pot~
+*.swp
+.DS_Store
+
+# Arquivos do sistema
+Thumbs.db
+
+# Docker
+*.pid
+*.sock
+*.db
+.env.docker
+docker-compose.override.yml
+
+# VSCode
+.vscode/
+
+# Arquivos do Flask que podem ser criados em produção
+instance/
+*.sqlite3
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# Outros
+.idea/
+*.bak

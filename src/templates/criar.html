@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Criar Banco MySQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        a.button-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: #7f8c8d;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        a.button-back:hover {
+            background: #616d70;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 450px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            background: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #1f6391;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Criar Banco MySQL Docker</h1>
+
+    <a href="{{ url_for('index') }}" class="button-back">Voltar</a>
+
+    <form method="post">
+        <label for="nome_banco">Nome do Banco:</label>
+        <input type="text" id="nome_banco" name="nome_banco" placeholder="Digite o nome do banco">
+
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite o usuário">
+
+        <label for="senha_usuario">Senha do Usuário:</label>
+        <input type="password" id="senha_usuario" name="senha_usuario" placeholder="Digite a senha do usuário">
+
+        <label for="senha_root">Senha Root (se deixar vazio, será gerada automaticamente):</label>
+        <input type="password" id="senha_root" name="senha_root" placeholder="Digite a senha root">
+
+        <button type="submit">Criar Banco</button>
+    </form>
+
+</body>
+</html>

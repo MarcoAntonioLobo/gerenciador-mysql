@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerenciador MySQL Docker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        a.button {
+            display: inline-block;
+            background: #2980b9;
+            color: white;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        a.button:hover {
+            background: #1f6391;
+        }
+        .flash-messages {
+            background: #dff0d8;
+            border: 1px solid #d0e9c6;
+            color: #3c763d;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e8f0fe;
+        }
+        .action-link {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .action-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bancos MySQL Criados</h1>
+
+    <a href="{{ url_for('criar') }}" class="button">Criar Novo Banco</a>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          <ul>
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Banco</th>
+                <th>Porta</th>
+                <th>Root Password</th>
+                <th>Usuário</th>
+                <th>Senha Usuário</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for banco in bancos %}
+            <tr>
+                <td>{{ banco.id[:12] }}</td>
+                <td>{{ banco.nome_banco }}</td>
+                <td>{{ banco.porta }}</td>
+                <td>{{ banco.root_pwd }}</td>
+                <td>{{ banco.usuario }}</td>
+                <td>{{ banco.senha_usuario }}</td>
+                <td><a href="{{ url_for('remover', id=banco.id) }}" onclick="return confirm('Remover banco?')" class="action-link">Remover</a></td>
+            </tr>
+        {% else %}
+            <tr><td colspan="7" style="text-align:center;">Nenhum banco criado.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
